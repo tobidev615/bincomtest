@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %}View Results{% endblock %} {% block
+content %}
+
+<h1>Showing Registered Polling Units under: {{ lgatable.lga_name }}</h1>
+    <div class="content">
+        {% for items in p_unit %}
+            <div class="resultsview">
+                <b>
+                    {{ items.polling_unit_name }} LGA ID: {{ items.lga_id }}
+                </b>
+                <p>Polling Unit Unique ID: {{ items.uniqueid }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

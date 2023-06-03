@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}View Results{% endblock %} {% block
+content %}
+
+<h1>Showing results for PU: {{ puinfo.polling_unit_name }}</h1>
+    <div class="content">
+        {% for items in allresults %}
+            <div class="resultsview">
+                <b>
+                    {{ items.party_abbreviation }} : {{ items.party_score }}
+                </b>
+                <p>AgentName: {{ items.entered_by_user }}</p>
+                <p>Polling Unit: {{ items.polling_unit_uniqueid }}</p>
+                <p>Results Entered on: {{ items.date_entered }}</p>
+                <p>Agents GEO IP: {{ items.user_ip_address }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

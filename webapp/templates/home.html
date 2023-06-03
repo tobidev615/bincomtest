@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1 align="center">ANSWERS 1,2 & 3</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <form method="POST" action="{{url_for('views.resultchecker')}}">
+        <div class="mb-3">
+          <label for="puidquery" class="form-label">Select a Polling Unit Below to view results</label>
+          <select class="form-select" id = 'puidquery' aria-label="Default select example" name='puid'>
+            <option selected>Choose Polling Unit</option>
+            {% for item in polling_id %}
+            <option value="{{ item.uniqueid }}">{{ item.polling_unit_name }}</option>
+            {% endfor %}
+          </select>
+          <div id="puidhelp" class="form-text">This is an answer to QUESTION 1.{Completed}</div>
+        </div>
+         <button type="submit" class="btn btn-primary">View Results</button>
+      </form>
+    </div>
+    <div class="col-sm">
+      <div class="col-sm">
+        <form method="POST" action="{{url_for('views.lgaresult')}}">
+          <div class="mb-3">
+            <label for="lgaidquery" class="form-label">Select a Local Gov. Below to view summed results</label>
+            <select class="form-select" id = 'lgaidquery' aria-label="Default select example" name='lgaid'>
+              <option selected>Choose  Local Gov.</option>
+              {% for item in lga_id_response %}
+              <option value="{{ item.uniqueid }}">{{ item.lga_name }}</option>
+              {% endfor %}
+            </select>
+            <div id="lgaidhelp" class="form-text">This is an answer to QUESTION 2. {Not Complete} </div>
+          </div>
+           <button type="submit" class="btn btn-primary">View Results</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-sm">
+        <form action="/newresults">
+          <div id="createhelp" class="form-text">This is an answer to QUESTION 3. {Completed} </div>
+           <button type="submit" class="btn btn-primary">Add New Record</button>
+        </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
